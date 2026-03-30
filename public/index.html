@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debtirtho Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Noise overlay -->
+    <div class="noise-overlay"></div>
+    <!-- Scanlines -->
+    <div class="scanlines"></div>
+    <!-- Gradient orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot" id="dot"></div>
+    <div class="cursor-ring" id="ring">
+        <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="72 216"/></svg>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- NAVIGATION -->
+    <nav id="nav">
+        <a href="#about" class="logo">
+            <span class="logo-bracket">[</span>DEB<span class="logo-slash">//</span><span class="logo-bracket">]</span>
+        </a>
+        <div class="menu-toggle" id="menuToggle"><span></span><span></span><span></span></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about" class="nav-link"><em>01.</em>About</a></li>
+            <li><a href="#skills" class="nav-link"><em>02.</em>Skills</a></li>
+            <li><a href="#projects" class="nav-link"><em>03.</em>Projects</a></li>
+            <li><a href="#contact" class="nav-link"><em>04.</em>Contact</a></li>
+        </ul>
+        <!-- ✏️ UPDATE: Replace with your actual resume PDF link -->
+        <a href="Ankit Resume.pdf" target="_blank" rel="noopener" class="btn-resume magnetic">
+            <span>Resume</span>
+            <i class="fas fa-arrow-up-right-from-square"></i>
+        </a>
+    </nav>
+
+    <!-- ═══════════════════════════════════════
+         HERO SECTION
+    ═══════════════════════════════════════ -->
+    <section class="hero" id="about">
+        <canvas id="bg-canvas"></canvas>
+
+        <div class="hero-content">
+            <div class="hero-left">
+                <div class="status-badge" data-aos>
+                    <span class="status-pulse"></span>
+                    <span>Available for work &amp; collaboration</span>
+                </div>
+
+                <p class="hero-greeting" data-aos data-aos-delay="100">
+                    <span class="term-prompt">~/portfolio</span> <span class="term-cmd blink-cursor">▮</span>
+                </p>
+
+                <h1 class="hero-name" data-aos data-aos-delay="200">
+                    <span class="glitch-wrap">
+                        <span class="glitch" data-text="Debtirtho">Debtirtho</span>
+                    </span>
+                </h1>
+
+                <div class="hero-role" data-aos data-aos-delay="350">
+                    <span class="role-tag">Full-Stack Dev</span>
+                    <span class="role-divider">×</span>
+                    <span class="role-tag role-sec">Cybersecurity</span>
+                </div>
+
+                <p class="hero-desc" data-aos data-aos-delay="500">
+                    BCA student building <mark>scalable, secure</mark> web applications.
+                    I bridge elegant UI with hardened systems — writing clean code by day,
+                    hunting vulnerabilities by night.
+                </p>
+
+                <div class="hero-stats" data-aos data-aos-delay="650">
+                    <div class="stat">
+                        <span class="stat-num" data-count="2">0</span><span class="stat-unit">+</span>
+                        <span class="stat-label">Yrs Coding</span>
+                    </div>
+                    <div class="stat-line"></div>
+                    <div class="stat">
+                        <span class="stat-num" data-count="3">0</span><span class="stat-unit">+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-line"></div>
+                    <div class="stat">
+                        <span class="stat-num" data-count="50">0</span><span class="stat-unit"></span>
+                        <span class="stat-label">Coffees ☕</span>
+                    </div>
+                </div>
+
+                <div class="hero-cta" data-aos data-aos-delay="800">
+                    <a href="#projects" class="cta-primary magnetic">
+                        <span class="cta-text">View My Work</span>
+                        <span class="cta-icon"><i class="fas fa-arrow-right"></i></span>
+                        <span class="cta-glow"></span>
+                    </a>
+                    <a href="#contact" class="cta-ghost magnetic">Let's Talk</a>
+                </div>
+            </div>
+
+            <div class="hero-right" data-aos data-aos-delay="300">
+                <!-- 3D Rotating Tech Globe -->
+                <div class="globe-wrap">
+                    <canvas id="globe-canvas"></canvas>
+                    <div class="globe-ring globe-ring-1"></div>
+                    <div class="globe-ring globe-ring-2"></div>
+                    <div class="globe-ring globe-ring-3"></div>
+                    <!-- Floating tech badges -->
+                    <div class="float-badge fb-1"><i class="fab fa-python"></i> Python</div>
+                    <div class="float-badge fb-2"><i class="fas fa-shield-alt"></i> Security</div>
+                    <div class="float-badge fb-3"><i class="fab fa-node"></i> Node.js</div>
+                    <div class="float-badge fb-4"><i class="fas fa-database"></i> MongoDB</div>
+                </div>
+
+                <!-- Terminal window illustration -->
+                <div class="terminal-card">
+                    <div class="term-bar">
+                        <span class="dot dot-r"></span>
+                        <span class="dot dot-y"></span>
+                        <span class="dot dot-g"></span>
+                        <span class="term-title">debtirtho@kali:~</span>
+                    </div>
+                    <div class="term-body" id="termBody"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="scroll-cue">
+            <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         SKILLS SECTION
+    ═══════════════════════════════════════ -->
+    <section id="skills" class="section reveal">
+        <div class="section-header">
+            <p class="section-label"><span></span>What I Know</p>
+            <h2 class="section-title">Skills &amp; Technologies</h2>
+            <p class="section-sub">A curated stack — built, broken, and rebuilt.</p>
+        </div>
+
+        <div class="skills-categories">
+            <div class="skill-category">
+                <h4 class="cat-label">// Languages</h4>
+                <div class="hex-grid">
+                    <div class="hex-item" data-skill="C" data-level="80">
+                        <div class="hex-inner"><i class="fas fa-code"></i><span>C</span></div>
+                    </div>
+                    <div class="hex-item" data-skill="C++" data-level="75">
+                        <div class="hex-inner"><i class="fas fa-code"></i><span>C++</span></div>
+                    </div>
+                    <div class="hex-item" data-skill="Python" data-level="88">
+                        <div class="hex-inner"><i class="fab fa-python"></i><span>Python</span></div>
+                    </div>
+                    <div class="hex-item" data-skill="Java" data-level="70">
+                        <div class="hex-inner"><i class="fab fa-java"></i><span>Java</span></div>
+                    </div>
+                    <div class="hex-item" data-skill="JavaScript" data-level="85">
+                        <div class="hex-inner"><i class="fab fa-js"></i><span>JS</span></div>
+                    </div>
+                    <div class="hex-item" data-skill="SQL" data-level="78">
+                        <div class="hex-inner"><i class="fas fa-database"></i><span>SQL</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h4 class="cat-label">// Web & Tools</h4>
+                <div class="hex-grid">
+                    <div class="hex-item" data-skill="HTML5" data-level="95">
+                        <div class="hex-inner"><i class="fab fa-html5"></i><span>HTML</span></div>
+                    </div>
+                    <div class="hex-item" data-skill="CSS3" data-level="90">
+                        <div class="hex-inner"><i class="fab fa-css3-alt"></i><span>CSS</span></div>
+                    </div>
+                    <div class="hex-item" data-skill="Node.js" data-level="80">
+                        <div class="hex-inner"><i class="fab fa-node"></i><span>Node</span></div>
+                    </div>
+                    <div class="hex-item" data-skill="MongoDB" data-level="75">
+                        <div class="hex-inner"><i class="fas fa-leaf"></i><span>Mongo</span></div>
+                    </div>
+                    <div class="hex-item" data-skill="Linux" data-level="85">
+                        <div class="hex-inner"><i class="fab fa-linux"></i><span>Linux</span></div>
+                    </div>
+                    <div class="hex-item" data-skill="Security" data-level="82">
+                        <div class="hex-inner"><i class="fas fa-shield-alt"></i><span>SecOps</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skill detail tooltip -->
+        <div class="skill-detail" id="skillDetail">
+            <span class="sd-name"></span>
+            <div class="sd-bar"><div class="sd-fill"></div></div>
+            <span class="sd-pct"></span>
+        </div>
+
+        <!-- Decorative circuit SVG -->
+        <svg class="circuit-deco" viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M0 100 L80 100 L80 40 L200 40 L200 100 L280 100 L280 160 L380 160 L380 100 L480 100 L480 60 L600 60" fill="none" stroke="rgba(0,255,200,0.15)" stroke-width="1.5"/>
+            <circle cx="80" cy="100" r="4" fill="rgba(0,255,200,0.4)"/>
+            <circle cx="200" cy="40" r="4" fill="rgba(0,255,200,0.4)"/>
+            <circle cx="280" cy="160" r="4" fill="rgba(0,255,200,0.4)"/>
+            <circle cx="380" cy="100" r="4" fill="rgba(0,255,200,0.4)"/>
+            <circle cx="480" cy="60" r="4" fill="rgba(0,255,200,0.4)"/>
+            <path d="M0 130 L50 130 L50 170 L150 170 L150 130 L250 130 L250 70 L350 70 L350 130 L450 130 L450 80 L600 80" fill="none" stroke="rgba(123,47,255,0.12)" stroke-width="1"/>
+        </svg>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         PROJECTS SECTION
+    ═══════════════════════════════════════ -->
+    <section id="projects" class="section reveal">
+        <div class="section-header">
+            <p class="section-label"><span></span>What I've Built</p>
+            <h2 class="section-title">Projects</h2>
+            <p class="section-sub">Real code. Real impact.</p>
+        </div>
+
+        <!-- Featured Project -->
+        <div class="featured-project tilt-card">
+            <div class="fp-visual">
+                <!-- Generative project preview -->
+                <svg class="proj-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="pg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#00ffc8;stop-opacity:0.15"/>
+                            <stop offset="100%" style="stop-color:#7b2fff;stop-opacity:0.15"/>
+                        </linearGradient>
+                        <filter id="glow1">
+                            <feGaussianBlur stdDeviation="3" result="blur"/>
+                            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                        </filter>
+                    </defs>
+                    <rect width="500" height="320" fill="url(#pg1)" rx="8"/>
+                    <!-- Browser chrome -->
+                    <rect x="20" y="20" width="460" height="280" rx="6" fill="rgba(5,8,16,0.8)" stroke="rgba(0,255,200,0.3)" stroke-width="1"/>
+                    <rect x="20" y="20" width="460" height="32" rx="6" fill="rgba(15,22,41,0.9)"/>
+                    <circle cx="40" cy="36" r="5" fill="#ff5f57"/>
+                    <circle cx="58" cy="36" r="5" fill="#febc2e"/>
+                    <circle cx="76" cy="36" r="5" fill="#28c840"/>
+                    <rect x="100" y="28" width="280" height="16" rx="8" fill="rgba(0,255,200,0.08)" stroke="rgba(0,255,200,0.15)" stroke-width="1"/>
+                    <text x="240" y="40" text-anchor="middle" font-family="JetBrains Mono" font-size="8" fill="rgba(0,255,200,0.6)">debtirtho.dev</text>
+                    <!-- Nav -->
+                    <rect x="30" y="62" width="440" height="20" rx="2" fill="rgba(0,255,200,0.04)"/>
+                    <rect x="40" y="66" width="40" height="10" rx="2" fill="rgba(0,255,200,0.3)"/>
+                    <rect x="360" y="66" width="30" height="10" rx="2" fill="rgba(0,255,200,0.15)"/>
+                    <rect x="395" y="66" width="30" height="10" rx="2" fill="rgba(0,255,200,0.08)"/>
+                    <!-- Hero text lines -->
+                    <rect x="40" y="100" width="200" height="18" rx="2" fill="rgba(255,255,255,0.7)"/>
+                    <rect x="40" y="126" width="280" height="10" rx="2" fill="rgba(200,214,240,0.25)"/>
+                    <rect x="40" y="142" width="240" height="10" rx="2" fill="rgba(200,214,240,0.15)"/>
+                    <rect x="40" y="158" width="260" height="10" rx="2" fill="rgba(200,214,240,0.1)"/>
+                    <rect x="40" y="182" width="100" height="28" rx="4" fill="rgba(0,255,200,0.9)"/>
+                    <rect x="148" y="182" width="80" height="28" rx="4" fill="none" stroke="rgba(0,255,200,0.4)" stroke-width="1"/>
+                    <!-- Right side visual -->
+                    <circle cx="390" cy="185" r="60" fill="none" stroke="rgba(0,255,200,0.1)" stroke-width="1"/>
+                    <circle cx="390" cy="185" r="45" fill="none" stroke="rgba(123,47,255,0.15)" stroke-width="1"/>
+                    <circle cx="390" cy="185" r="30" fill="rgba(0,255,200,0.06)"/>
+                    <circle cx="390" cy="185" r="8" fill="rgba(0,255,200,0.6)" filter="url(#glow1)"/>
+                    <!-- Orbit dots -->
+                    <circle cx="435" cy="155" r="4" fill="rgba(0,255,200,0.8)" filter="url(#glow1)"/>
+                    <circle cx="355" cy="230" r="3" fill="rgba(123,47,255,0.8)"/>
+                    <circle cx="420" cy="235" r="3" fill="rgba(255,61,110,0.8)"/>
+                    <!-- Footer cards -->
+                    <rect x="30" y="258" width="130" height="30" rx="4" fill="rgba(0,255,200,0.06)" stroke="rgba(0,255,200,0.15)" stroke-width="1"/>
+                    <rect x="172" y="258" width="130" height="30" rx="4" fill="rgba(0,255,200,0.04)" stroke="rgba(0,255,200,0.08)" stroke-width="1"/>
+                    <rect x="314" y="258" width="130" height="30" rx="4" fill="rgba(0,255,200,0.04)" stroke="rgba(0,255,200,0.08)" stroke-width="1"/>
+                </svg>
+                <div class="fp-overlay">
+                    <!-- ✏️ UPDATE: Replace with your actual GitHub link -->
+                    <a href="https://github.com/Debtirtho07/portfolio" target="_blank" rel="noopener" class="fp-link magnetic">
+                        <i class="fab fa-github"></i> View Source
+                    </a>
+                </div>
+            </div>
+            <div class="fp-info">
+                <span class="fp-featured-tag">⭐ Featured Project</span>
+                <h3 class="fp-title">Portfolio Website</h3>
+                <div class="fp-desc-card">
+                    <p>A full-stack portfolio with contact form, MongoDB integration, and live deployment via Render. Built from scratch with performance and security in mind. Animated canvas background, custom cursor, and scroll-reveal effects.</p>
+                </div>
+                <div class="fp-tech">
+                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                    <span>Node.js</span><span>MongoDB</span><span>Render</span>
+                </div>
+                <div class="fp-links">
+                    <!-- ✏️ UPDATE: Replace href with actual GitHub/live URLs -->
+                    <a href="https://github.com/Debtirtho07" target="_blank" rel="noopener" class="fp-btn magnetic"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" target="_blank" rel="noopener" class="fp-btn fp-btn-live magnetic"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Other Projects Grid -->
+        <div class="projects-grid">
+            <!-- Project 2 -->
+            <div class="project-card tilt-card">
+                <div class="pc-glow"></div>
+                <div class="pc-top">
+                    <div class="pc-icon"><i class="far fa-folder-open"></i></div>
+                    <div class="pc-links">
+                        <!-- ✏️ UPDATE: Replace href with actual GitHub/live URLs -->
+                        <a href="https://github.com/Debtirtho07" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" rel="noopener" title="Live"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <!-- Mini project visual -->
+                <div class="pc-visual">
+                    <svg viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="260" height="120" rx="6" fill="rgba(11,15,26,0.8)"/>
+                        <!-- Timer circle -->
+                        <circle cx="60" cy="60" r="40" fill="none" stroke="rgba(0,255,200,0.08)" stroke-width="3"/>
+                        <circle cx="60" cy="60" r="40" fill="none" stroke="rgba(0,255,200,0.7)" stroke-width="3" stroke-dasharray="180 72" stroke-dashoffset="-18" stroke-linecap="round"/>
+                        <text x="60" y="55" text-anchor="middle" font-family="Orbitron" font-size="14" fill="white">25:00</text>
+                        <text x="60" y="70" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="rgba(0,255,200,0.6)">FOCUS</text>
+                        <!-- Task list -->
+                        <rect x="120" y="20" width="120" height="12" rx="2" fill="rgba(0,255,200,0.12)"/>
+                        <rect x="120" y="38" width="100" height="12" rx="2" fill="rgba(0,255,200,0.08)"/>
+                        <rect x="120" y="56" width="110" height="12" rx="2" fill="rgba(0,255,200,0.06)"/>
+                        <rect x="120" y="74" width="90" height="12" rx="2" fill="rgba(0,255,200,0.04)"/>
+                        <rect x="120" y="95" width="70" height="16" rx="4" fill="rgba(0,255,200,0.8)"/>
+                        <text x="155" y="107" text-anchor="middle" font-family="JetBrains Mono" font-size="7" fill="#050810">Start Focus</text>
+                    </svg>
+                </div>
+                <h3 class="pc-title">Focus Flow</h3>
+                <p class="pc-desc">A real-time productivity app with task tracking, time blocks, and focus sessions that defeat procrastination.</p>
+                <div class="pc-tech">
+                    <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                </div>
+            </div>
+
+            <!-- Project 3 — Security Tool -->
+            <div class="project-card tilt-card">
+                <div class="pc-glow"></div>
+                <div class="pc-top">
+                    <div class="pc-icon pc-icon-sec"><i class="fas fa-shield-halved"></i></div>
+                    <div class="pc-links">
+                        <a href="https://github.com/debtirtho" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" target="_blank" rel="noopener" title="Live"><i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="pc-visual">
+                    <svg viewBox="0 0 260 120" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="260" height="120" rx="6" fill="rgba(11,15,26,0.8)"/>
+                        <!-- Terminal output -->
+                        <text x="12" y="22" font-family="JetBrains Mono" font-size="8" fill="rgba(0,255,200,0.5)">$ nmap -sV target.host</text>
+                        <text x="12" y="36" font-family="JetBrains Mono" font-size="7" fill="rgba(200,214,240,0.4)">Starting Nmap scan...</text>
+                        <text x="12" y="50" font-family="JetBrains Mono" font-size="7" fill="rgba(0,255,200,0.7)">PORT     STATE  SERVICE</text>
+                        <text x="12" y="64" font-family="JetBrains Mono" font-size="7" fill="rgba(200,214,240,0.6)">22/tcp   open   ssh</text>
+                        <text x="12" y="78" font-family="JetBrains Mono" font-size="7" fill="rgba(200,214,240,0.6)">80/tcp   open   http</text>
+                        <text x="12" y="92" font-family="JetBrains Mono" font-size="7" fill="rgba(255,61,110,0.8)">443/tcp  open   https ⚠</text>
+                        <text x="12" y="108" font-family="JetBrains Mono" font-size="7" fill="rgba(0,255,200,0.4)">Scan complete. ■</text>
+                        <!-- Side bar chart -->
+                        <rect x="200" y="90" width="12" height="25" rx="2" fill="rgba(0,255,200,0.6)"/>
+                        <rect x="218" y="70" width="12" height="45" rx="2" fill="rgba(123,47,255,0.6)"/>
+                        <rect x="236" y="80" width="12" height="35" rx="2" fill="rgba(255,61,110,0.5)"/>
+                    </svg>
+                </div>
+                <h3 class="pc-title">SecScan CLI</h3>
+                <p class="pc-desc">A Python-based network recon tool that automates vulnerability scanning and generates structured security reports.</p>
+                <div class="pc-tech">
+                    <span>Python</span><span>Nmap</span><span>Linux</span>
+                </div>
+            </div>
+
+            <!-- Project 4 — Placeholder -->
+            <div class="project-card project-more tilt-card">
+                <div class="more-glow"></div>
+                <i class="fas fa-code-branch"></i>
+                <p>More Projects</p>
+                <span>Building in progress...</span>
+                <div class="more-dots">
+                    <span></span><span></span><span></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════
+         CONTACT SECTION
+    ═══════════════════════════════════════ -->
+    <section id="contact" class="section reveal">
+        <div class="contact-bg-text" aria-hidden="true">CONNECT</div>
+
+        <div class="section-header">
+            <p class="section-label"><span></span>Get In Touch</p>
+            <h2 class="section-title">Contact Me</h2>
+        </div>
+
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div class="contact-big-email">
+                    <!-- ✏️ UPDATE: Replace with your actual email address -->
+                    <a href="mailto:debtirtho@gmail.com" class="big-email magnetic">
+                        debtirthoghosh@gmail.com
+                        <span class="email-arrow"><i class="fas fa-arrow-right"></i></span>
+                    </a>
+                </div>
+
+                <p class="contact-tagline">
+                    Open to freelance, collaborations, internships &amp; full-time roles.
+                    Let's build something <span class="accent-word">exceptional</span>.
+                </p>
+
+                <div class="social-row">
+                    <!-- ✏️ UPDATE: Replace all href values with your actual profile links -->
+                    <a href="https://github.com/Debtirtho07" target="_blank" rel="noopener" class="social-link magnetic" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                        <span class="social-name">GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/debtirtho-ghosh-b70515367/" target="_blank" rel="noopener" class="social-link magnetic" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                        <span class="social-name">LinkedIn</span>
+                    </a>
+                    <a href="https://x.com/DebtirthoG13793" target="_blank" rel="noopener" class="social-link magnetic" aria-label="Twitter / X">
+                        <i class="fab fa-x-twitter"></i>
+                        <span class="social-name">Twitter</span>
+                    </a>
+                    <a href="mailto :debtirthoghosh@gmail.com" class="social-link magnetic" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                        <span class="social-name">Email</span>
+                    </a>
+                </div>
+            </div>
+
+            <form id="contact-form" class="contact-form" novalidate>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" name="name" id="f-name" placeholder=" " required>
+                        <label for="f-name">Your Name</label>
+                        <span class="form-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="email" id="f-email" placeholder=" " required>
+                        <label for="f-email">Your Email</label>
+                        <span class="form-border"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="subject" id="f-subject" placeholder=" ">
+                    <label for="f-subject">Subject</label>
+                    <span class="form-border"></span>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" id="f-message" rows="5" placeholder=" " required></textarea>
+                    <label for="f-message">Message</label>
+                    <span class="form-border"></span>
+                </div>
+                <button type="submit" class="btn-send magnetic">
+                    <span class="btn-text">Send Message</span>
+                    <span class="btn-icon"><i class="fas fa-paper-plane"></i></span>
+                    <span class="btn-bg"></span>
+                </button>
+                <p class="form-status" id="formStatus"></p>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-logo">[DEB//]</span>
+            <p>Designed &amp; Built with <span class="heart">♥</span> by <strong>Debtirtho</strong> · 2026</p>
+            <div class="footer-socials">
+                <a href="https://github.com/Debtirtho07" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/debtirtho-ghosh-b70515367/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="mailto :debtirthoghosh@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chat Button -->
+    <button id="vf-toggle" class="vf-toggle" aria-label="Open chat" aria-expanded="false">
+        <span class="vf-icon">💬</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
